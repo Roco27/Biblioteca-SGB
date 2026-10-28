@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Confirmar reserva</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+<div class="brand">
+  <img src="C:\Users\Richard\Desktop\html\SVG\Recurso 2.svg" alt="biblioSGB">
+</div>
+<nav>
+<a>Panel</a>
+<a class="active">Catálogo</a>
+<a>Préstamos</a>
+<a>Devoluciones</a>
+<a>Usuarios</a>
+<a>Gestión de libros</a>
+</nav>
+<div class="user">US</div>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+<h5>GENERAL</h5>
+<a>Panel principal</a>
+
+<h5>CATÁLOGO</h5>
+<a class="selected">Catálogo</a>
+
+<h5>OPERACIONES</h5>
+<a>Préstamos</a>
+<a>Devoluciones</a>
+</aside>
+
+<main class="content">
+<div class="card">
+
+<div class="check">✓</div>
+
+<h2>Confirmar reserva</h2>
+<p>Revise los datos antes de confirmar su solicitud</p>
+
+<div class="book">
+<div class="cover">Libro</div>
+<div>
+<strong>Cien años de soledad</strong>
+<small>Gabriel García Márquez</small>
+</div>
+</div>
+
+<div class="info">
+<div><span>FECHA DE RESERVA</span><b>07 de agosto de 2026</b></div>
+<div><span>DISPONIBLE PARA RECOGER</span><b>Hasta el 10 de agosto de 2026</b></div>
+<div><span>PUNTO DE ENTREGA</span><b>Biblioteca - Sede Central</b></div>
+</div>
+
+<div class="actions">
+<button class="cancelar">Cancelar</button>
+<button id="confirmar" class="confirmar">Confirmar reserva</button>
+</div>
+
+</div>
+</main>
+</div>
+
+<script>
+document.getElementById('confirmar').addEventListener('click',function(){
+this.textContent='✓ Reserva confirmada';
+this.disabled=true;
+alert('Reserva registrada correctamente');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biblioSGB - Detalle del libro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+  <img src="C:\Users\Richard\Desktop\html\SVG\Recurso 2.svg" alt="biblioSGB">
+</div>
+
+    <nav class="top-nav">
+      <a href="index.html">▣ Panel</a>
+      <a class="active" href="catalogo.html">▤ Catálogo</a>
+      <a href="#prestamos">▱ Préstamos</a>
+      <a href="#devoluciones">↩ Devoluciones</a>
+      <a href="#usuarios">♙ Usuarios</a>
+      <a href="#libros">▥ Gestión de libros</a>
+    </nav>
+
+    <button class="profile" id="profileBtn" type="button">
+      <span>USUARIO</span>
+      <b>US</b>
+    </button>
+  </header>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+      <div class="side-section">
+        <div class="side-title">GENERAL</div>
+        <a class="side-link" href="index.html">⌂ <span>Panel principal</span></a>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">CATÁLOGO</div>
+        <a class="side-link selected" href="catalogo.html">◉ <span>Catálogo</span></a>
+        <a class="side-link" href="#libros">▤ <span>Gestión de libros</span></a>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">OPERACIONES</div>
+        <a class="side-link" href="#prestamos">▱ <span>Préstamos</span></a>
+        <a class="side-link" href="#devoluciones">↩ <span>Devoluciones</span></a>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">ADMINISTRACIÓN</div>
+        <a class="side-link" href="#usuarios">♙ <span>Usuarios</span></a>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="breadcrumb">
+        Catálogo <span>›</span> Literatura <span>›</span> Cien años de soledad
+      </div>
+
+      <section class="book-detail">
+
+        <div class="book-cover">
+          <div class="cover-title"> <img 
+    src="https://i.calameoassets.com/230507060437-65c68871b6732076f1472acfa0efa30b/large.jpg"
+    alt="Portada de Cien años de soledad"
+  > </div>
+        </div>
+
+        <div class="book-main">
+          <h1>Cien años de soledad</h1>
+          <p class="author">Gabriel García Márquez</p>
+
+          <div class="top-info">
+            <span class="category">Literatura</span>
+            <span class="status available">Disponible</span>
+          </div>
+
+          <div class="details">
+            <div class="detail-row">
+              <span>EDITORIAL</span>
+              <strong>Editorial Sudamericana</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>CATEGORÍA</span>
+              <strong>Literatura latinoamericana</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>EJEMPLARES</span>
+              <strong>4 totales · 3 disponibles</strong>
+            </div>
+
+            <div class="detail-row">
+              <span>UBICACIÓN</span>
+              <strong>Estante B-12</strong>
+            </div>
+          </div>
+
+          <p class="description">
+            Novela emblemática que narra la historia de la familia Buendía a lo largo de varias generaciones
+            en el pueblo ficticio de Macondo.
+          </p>
+
+          <button class="reserve-btn" id="reserveBtn" type="button">
+            ♧ Reservar ejemplar
+          </button>
+        </div>
+      </section>
+
+      <div class="back-link">
+        <a href="catalogo.html">← Volver al catálogo</a>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="toast" id="toast">
+    <strong>Reserva registrada</strong>
+    <span>El ejemplar ha sido reservado correctamente.</span>
+  </div>
+
+  <script>
+    const reserveBtn = document.getElementById('reserveBtn');
+    const toast = document.getElementById('toast');
+
+    reserveBtn.addEventListener('click', () => {
+      reserveBtn.disabled = true;
+      reserveBtn.textContent = '✓ Reserva registrada';
+
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    });
+
+    document.getElementById('profileBtn').addEventListener('click', () => {
+      alert('Sesión activa: Usuario');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biblioSGB - Gestión de préstamos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">biblio<span>SGB</span></div>
+
+    <nav class="top-nav">
+      <a href="index.html">▣ Panel</a>
+      <a href="catalogo.html">▤ Catálogo</a>
+      <a class="active" href="#prestamos">▱ Préstamos</a>
+      <a href="#devoluciones">↩ Devoluciones</a>
+      <a href="#usuarios">♙ Usuarios</a>
+      <a href="#libros">▥ Gestión de libros</a>
+    </nav>
+
+    <button class="profile" id="profileBtn" type="button">
+      <span>ADMINISTRADOR</span><b>AD</b>
+    </button>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-section">
+        <div class="side-title">GENERAL</div>
+        <a class="side-link" href="index.html">⌂ <span>Panel principal</span></a>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">CATÁLOGO</div>
+        <a class="side-link" href="catalogo.html">◉ <span>Catálogo</span></a>
+        <a class="side-link" href="#libros">▤ <span>Gestión de libros</span></a>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">OPERACIONES</div>
+        <a class="side-link selected" href="#prestamos">▱ <span>Préstamos</span></a>
+        <a class="side-link" href="#devoluciones">↩ <span>Devoluciones</span></a>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">ADMINISTRACIÓN</div>
+        <a class="side-link" href="#usuarios">♙ <span>Usuarios</span></a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="heading">
+        <div>
+          <h1>Gestión de préstamos</h1>
+          <p>217 préstamos activos · 12 vencidos</p>
+        </div>
+        <button class="primary-btn" id="newLoan">＋ Registrar préstamo</button>
+      </div>
+
+      <section class="table-card">
+        <div class="toolbar">
+          <div class="search">
+            <span>⌕</span>
+            <input id="search" type="search" placeholder="Buscar usuario o libro...">
+          </div>
+          <select id="statusFilter" aria-label="Filtrar por estado">
+            <option value="Todos">Todos los estados</option>
+            <option value="A tiempo">A tiempo</option>
+            <option value="Vencido">Vencido</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table id="loanTable">
+            <thead>
+              <tr>
+                <th>USUARIO</th>
+                <th>LIBRO</th>
+                <th>FECHA PRÉSTAMO</th>
+                <th>FECHA LÍMITE</th>
+                <th>ESTADO</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Camilo Ortiz</td>
+                <td>Cien años de soledad</td>
+                <td>28/07/2026</td>
+                <td>11/08/2026</td>
+                <td><span class="badge ontime">A tiempo</span></td>
+                <td><button class="view" data-index="0">Ver</button></td>
+              </tr>
+              <tr>
+                <td>David Suárez</td>
+                <td>El principito</td>
+                <td>15/07/2026</td>
+                <td>29/07/2026</td>
+                <td><span class="badge overdue">Vencido</span></td>
+                <td><button class="view" data-index="1">Ver</button></td>
+              </tr>
+              <tr>
+                <td>Julián Pérez</td>
+                <td>Clean Code</td>
+                <td>01/08/2026</td>
+                <td>15/08/2026</td>
+                <td><span class="badge ontime">A tiempo</span></td>
+                <td><button class="view" data-index="2">Ver</button></td>
+              </tr>
+              <tr>
+                <td>Laura Gómez</td>
+                <td>Introducción a Algoritmos</td>
+                <td>30/07/2026</td>
+                <td>13/08/2026</td>
+                <td><span class="badge ontime">A tiempo</span></td>
+                <td><button class="view" data-index="3">Ver</button></td>
+              </tr>
+              <tr>
+                <td>Andrés Bonilla</td>
+                <td>Breve historia del tiempo</td>
+                <td>18/07/2026</td>
+                <td>24/07/2026</td>
+                <td><span class="badge overdue">Vencido</span></td>
+                <td><button class="view" data-index="4">Ver</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="empty" id="empty">No se encontraron préstamos.</div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="close" id="close" type="button">×</button>
+      <h2 id="modalTitle">Registrar préstamo</h2>
+      <p id="modalSubtitle">Ingresa la información del nuevo préstamo.</p>
+
+      <form id="loanForm">
+        <label>Usuario
+          <input id="userInput" required placeholder="Nombre del usuario">
+        </label>
+        <label>Libro
+          <input id="bookInput" required placeholder="Título del libro">
+        </label>
+        <div class="form-row">
+          <label>Fecha de préstamo
+            <input id="startInput" type="date" required>
+          </label>
+          <label>Fecha límite
+            <input id="endInput" type="date" required>
+          </label>
+        </div>
+        <button class="primary-btn full" type="submit">Guardar préstamo</button>
+      </form>
+      <div class="success" id="success"></div>
+    </div>
+  </div>
+
+  <script>
+    const rows = [...document.querySelectorAll('#loanTable tbody tr')];
+    const search = document.getElementById('search');
+    const filter = document.getElementById('statusFilter');
+    const empty = document.getElementById('empty');
+
+    function filterRows() {
+      const q = search.value.toLowerCase().trim();
+      const status = filter.value;
+      let count = 0;
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const rowStatus = row.querySelector('.badge').textContent.trim();
+        const show = text.includes(q) && (status === 'Todos' || rowStatus === status);
+        row.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+
+      empty.classList.toggle('show', count === 0);
+    }
+
+    search.addEventListener('input', filterRows);
+    filter.addEventListener('change', filterRows);
+
+    const modal = document.getElementById('modal');
+    const close = () => {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+    };
+
+    document.getElementById('newLoan').addEventListener('click', () => {
+      document.getElementById('modalTitle').textContent = 'Registrar préstamo';
+      document.getElementById('modalSubtitle').textContent = 'Ingresa la información del nuevo préstamo.';
+      document.getElementById('loanForm').reset();
+      document.getElementById('success').textContent = '';
+      document.getElementById('loanForm').style.display = '';
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+    });
+
+    document.getElementById('close').addEventListener('click', close);
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') close();
+    });
+
+    document.getElementById('loanForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const user = document.getElementById('userInput').value;
+      const book = document.getElementById('bookInput').value;
+
+      document.getElementById('success').textContent =
+        `Préstamo registrado correctamente para ${user}: ${book}.`;
+
+      document.getElementById('loanForm').style.display = 'none';
+    });
+
+    const loanData = [
+      ['Camilo Ortiz','Cien años de soledad','28/07/2026','11/08/2026','A tiempo'],
+      ['David Suárez','El principito','15/07/2026','29/07/2026','Vencido'],
+      ['Julián Pérez','Clean Code','01/08/2026','15/08/2026','A tiempo'],
+      ['Laura Gómez','Introducción a Algoritmos','30/07/2026','13/08/2026','A tiempo'],
+      ['Andrés Bonilla','Breve historia del tiempo','18/07/2026','24/07/2026','Vencido']
+    ];
+
+    document.querySelectorAll('.view').forEach(button => {
+      button.addEventListener('click', () => {
+        const d = loanData[button.dataset.index];
+        document.getElementById('modalTitle').textContent = 'Detalle del préstamo';
+        document.getElementById('modalSubtitle').textContent = 'Información del préstamo seleccionado.';
+        document.getElementById('loanForm').style.display = 'none';
+        document.getElementById('success').textContent =
+          `Usuario: ${d[0]} · Libro: ${d[1]} · Préstamo: ${d[2]} · Límite: ${d[3]} · Estado: ${d[4]}`;
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    document.getElementById('profileBtn').addEventListener('click', () => {
+      alert('Sesión activa: Administrador');
+    });
+  </script>
+</body>
+</html>

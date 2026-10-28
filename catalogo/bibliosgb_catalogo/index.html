@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biblioSGB - Catálogo de libros</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+     <div class="brand">
+  <img src="C:\Users\Richard\Desktop\html\SVG\Recurso 2.svg" alt="biblioSGB">
+</div>
+
+      <nav class="top-nav">
+        <a href="index.html">▣ Panel</a>
+        <a class="active" href="#catalogo">▤ Catálogo</a>
+        <a href="#prestamos">▱ Préstamos</a>
+        <a href="#devoluciones">↩ Devoluciones</a>
+        <a href="#usuarios">♙ Usuarios</a>
+        <a href="#libros">▥ Gestión de libros</a>
+      </nav>
+
+      <button class="profile" id="profileBtn" type="button">
+        <span>USUARIO</span>
+        <b>US</b>
+      </button>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-section">
+          <div class="side-title">GENERAL</div>
+          <a class="side-link" href="index.html">⌂ <span>Panel principal</span></a>
+        </div>
+
+        <div class="side-section">
+          <div class="side-title">CATÁLOGO</div>
+          <a class="side-link selected" href="#catalogo">◉ <span>Catálogo</span></a>
+          <a class="side-link" href="#libros">▤ <span>Gestión de libros</span></a>
+        </div>
+
+        <div class="side-section">
+          <div class="side-title">OPERACIONES</div>
+          <a class="side-link" href="#prestamos">▱ <span>Préstamos</span></a>
+          <a class="side-link" href="#devoluciones">↩ <span>Devoluciones</span></a>
+        </div>
+
+        <div class="side-section">
+          <div class="side-title">ADMINISTRACIÓN</div>
+          <a class="side-link" href="#usuarios">♙ <span>Usuarios</span></a>
+        </div>
+      </aside>
+
+      <main class="content" id="catalogo">
+
+        <div class="page-heading">
+          <div>
+            <h1>Catálogo de libros</h1>
+            <p>3,482 recursos bibliográficos disponibles para consulta</p>
+          </div>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="categories" id="categories">
+            <button class="category active" data-category="Todos">Todos</button>
+            <button class="category" data-category="Literatura">Literatura</button>
+            <button class="category" data-category="Tecnología">Tecnología</button>
+            <button class="category" data-category="Historia">Historia</button>
+            <button class="category" data-category="Ciencia">Ciencia</button>
+          </div>
+
+          <div class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Buscar libro..." aria-label="Buscar libro">
+          </div>
+        </div>
+
+        <section class="book-grid" id="bookGrid">
+
+          <article class="book-card" data-category="Literatura" data-title="Cien años de soledad">
+            <div class="book-cover cover-blue">
+         <img 
+    src="https://i.calameoassets.com/230507060437-65c68871b6732076f1472acfa0efa30b/large.jpg"
+    alt="Portada de Cien años de soledad"
+  >
+          </div>
+            <div class="book-info">
+              <h2>Cien años de soledad</h2>
+              <p class="author">Gabriel García Márquez</p>
+              <div class="book-bottom">
+                <span class="tag">literatura</span>
+                <span class="status available">Disponible</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card" data-category="Tecnología" data-title="Clean Code">
+            <div class="book-cover cover-lightblue">
+  <img 
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-OBTYHUQUW_kxGO6RjTbvHIz9q8EadbrsUegPn6LajA&s"
+    alt="Portada de Clean Code"
+  >
+</div>
+            <div class="book-info">
+              <h2>Clean Code</h2>
+              <p class="author">Robert C. Martin</p>
+              <div class="book-bottom">
+                <span class="tag">tecnología</span>
+                <span class="status available">Disponible</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card" data-category="Ciencia" data-title="Sapiens">
+            <div class="book-cover cover-gold">
+  <img 
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2UBat3EF1yD6IkHnlu8BetwHcYOvQf7nLvt9Pgo-wtg&s=10"
+    alt="Portada de Sapiens"
+  >
+</div>
+            <div class="book-info">
+              <h2>Sapiens</h2>
+              <p class="author">Yuval Noah Harari</p>
+              <div class="book-bottom">
+                <span class="tag">ciencia</span>
+                <span class="status borrowed">Prestado</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card" data-category="Literatura" data-title="El principito">
+            <div class="book-cover cover-gold">
+  <img 
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXED1MtDJAar7XLgEr9HX4VKfjfnJZNbZf4x8ZT-4kgQ&s=10"
+    alt="Portada de Sapiens"
+  >
+</div>
+            <div class="book-info">
+              <h2>El principito</h2>
+              <p class="author">Antoine de Saint-Exupéry</p>
+              <div class="book-bottom">
+                <span class="tag">literatura</span>
+                <span class="status available">Disponible</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card" data-category="Tecnología" data-title="Introducción a Algoritmos">
+            <div class="book-cover cover-gold">
+  <img 
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb5fazurdHgzKEueO3MjPlb1du3iVqT7K0S1Y8VgE7gOc7ADbfpOZHDLC6&s=10"
+    alt="Portada de Sapiens"
+  >
+</div>
+            <div class="book-info">
+              <h2>Introducción a Algoritmos</h2>
+              <p class="author">Cormen et al.</p>
+              <div class="book-bottom">
+                <span class="tag">tecnología</span>
+                <span class="status available">Disponible</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card" data-category="Ciencia" data-title="Breve historia del tiempo">
+            <div class="book-cover cover-gold">
+  <img 
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Y5k8I4-VfZ23-mRRvZMGi-EIu9BEqJyhC9lGAOhZWQ&s=10"
+    alt="Portada de Sapiens"
+  >
+</div>
+            <div class="book-info">
+              <h2>Breve historia del tiempo</h2>
+              <p class="author">Stephen Hawking</p>
+              <div class="book-bottom">
+                <span class="tag">ciencia</span>
+                <span class="status borrowed">Prestado</span>
+              </div>
+            </div>
+          </article>
+
+        </section>
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">⌕</div>
+          <h2>No se encontraron libros</h2>
+          <p>Prueba con otro término de búsqueda o categoría.</p>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="close" id="closeModal" type="button">×</button>
+      <h2 id="modalTitle">Libro</h2>
+      <p id="modalText"></p>
+
+      <div class="modal-book">
+        <div class="modal-cover" id="modalCover"></div>
+        <div>
+          <strong id="modalBookName"></strong>
+          <small id="modalAuthor"></small>
+          <span id="modalStatus"></span>
+        </div>
+      </div>
+
+      <button class="primary-btn full" id="modalAction" type="button">Solicitar préstamo</button>
+    </div>
+  </div>
+
+  <script>
+    const cards = [...document.querySelectorAll('.book-card')];
+    const categories = [...document.querySelectorAll('.category')];
+    const searchInput = document.getElementById('searchInput');
+    const emptyState = document.getElementById('emptyState');
+
+    let selectedCategory = 'Todos';
+
+    function filterBooks() {
+      const query = searchInput.value.toLowerCase().trim();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const title = card.dataset.title.toLowerCase();
+        const category = card.dataset.category;
+
+        const matchesCategory =
+          selectedCategory === 'Todos' || category === selectedCategory;
+
+        const matchesSearch = title.includes(query);
+
+        const show = matchesCategory && matchesSearch;
+        card.style.display = show ? '' : 'none';
+
+        if (show) visible++;
+      });
+
+      emptyState.classList.toggle('show', visible === 0);
+    }
+
+    categories.forEach(button => {
+      button.addEventListener('click', () => {
+        categories.forEach(item => item.classList.remove('active'));
+        button.classList.add('active');
+        selectedCategory = button.dataset.category;
+        filterBooks();
+      });
+    });
+
+    searchInput.addEventListener('input', filterBooks);
+
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalCover = document.getElementById('modalCover');
+    const modalBookName = document.getElementById('modalBookName');
+    const modalAuthor = document.getElementById('modalAuthor');
+    const modalStatus = document.getElementById('modalStatus');
+    const modalAction = document.getElementById('modalAction');
+
+    function openBook(card) {
+      const title = card.querySelector('h2').textContent;
+      const author = card.querySelector('.author').textContent;
+      const status = card.querySelector('.status').textContent;
+      const cover = card.querySelector('.book-cover');
+
+      modalTitle.textContent = title;
+      modalText.textContent = 'Información del recurso bibliográfico';
+      modalBookName.textContent = title;
+      modalAuthor.textContent = author;
+      modalStatus.textContent = status;
+
+      modalCover.className = 'modal-cover ' +
+        [...cover.classList].filter(c => c.startsWith('cover-')).join(' ');
+
+      if (status.toLowerCase().includes('prestado')) {
+        modalAction.textContent = 'Reservar libro';
+        modalAction.disabled = false;
+      } else {
+        modalAction.textContent = 'Solicitar préstamo';
+        modalAction.disabled = false;
+      }
+
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => openBook(card));
+    });
+
+    function closeModal() {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeModal();
+    });
+
+    modalAction.addEventListener('click', () => {
+      modalAction.textContent = 'Solicitud registrada ✓';
+      modalAction.disabled = true;
+      setTimeout(closeModal, 900);
+    });
+
+    document.getElementById('profileBtn').addEventListener('click', () => {
+      alert('Sesión activa: Usuario');
+    });
+  </script>
+</body>
+</html>

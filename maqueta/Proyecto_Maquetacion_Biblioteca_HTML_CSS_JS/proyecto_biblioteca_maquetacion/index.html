@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema de Gestión Bibliotecaria - Maquetación HTML5, CSS3 y JavaScript">
+  <title>Biblioteca | Sistema de Gestión Bibliotecaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <main id="login-view" class="login-page">
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="brand brand-center">
+        <div class="brand-mark" aria-hidden="true">
+  <img src="img/Recurso 2.svg" alt="Computador">
+</div>
+        <div>
+          <strong>Biblioteca</strong>
+          <span>Sistema de Gestión Bibliotecaria</span>
+        </div>
+      </div>
+      <div class="login-heading">
+        <p class="eyebrow">P-01 · Inicio de sesión</p>
+        <h1 id="login-title">Bienvenido</h1>
+        <p>Ingresa tus credenciales para acceder al sistema.</p>
+      </div>
+      <form id="login-form" class="form-grid">
+        <label>Usuario o correo electrónico
+          <input id="login-user" type="text" autocomplete="username" placeholder="usuario@biblioteca.com" required>
+        </label>
+        <label>Contraseña
+          <input id="login-password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+        </label>
+        <div class="demo-roles" aria-label="Accesos de demostración">
+          <button type="button" class="role-chip" data-demo-role="Administrador">Administrador</button>
+          <button type="button" class="role-chip" data-demo-role="Bibliotecario">Bibliotecario</button>
+          <button type="button" class="role-chip" data-demo-role="Usuario">Usuario</button>
+        </div>
+        <button class="btn btn-primary btn-full" type="submit">Ingresar al sistema</button>
+      </form>
+      <p class="form-help">Demostración local: selecciona un rol para cargar la interfaz correspondiente.</p>
+    </section>
+  </main>
+
+  <div id="app-shell" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">B</div>
+        <div>
+          <strong>Biblioteca</strong>
+          <span>Gestión Bibliotecaria</span>
+        </div>
+      </div>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal"></nav>
+      <div class="sidebar-footer">
+        <div class="mini-user">
+          <div class="avatar" id="user-avatar">U</div>
+          <div>
+            <strong id="sidebar-user">Usuario</strong>
+            <span id="sidebar-role">Usuario</span>
+          </div>
+        </div>
+        <button id="logout-btn" class="btn btn-ghost btn-full">Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <section class="content-area">
+      <header class="topbar">
+        <button id="menu-toggle" class="icon-btn mobile-only" aria-label="Abrir menú">☰</button>
+        <div>
+          <p class="eyebrow">Sistema de Gestión Bibliotecaria</p>
+          <h2 id="page-title">Panel principal</h2>
+        </div>
+        <div class="topbar-actions">
+          <span class="role-badge" id="role-badge">Usuario</span>
+          <button class="icon-btn" id="theme-btn" title="Cambiar contraste">◐</button>
+        </div>
+      </header>
+
+      <div id="page-content" class="page-content"></div>
+    </section>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

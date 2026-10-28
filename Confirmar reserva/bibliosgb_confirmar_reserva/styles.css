@@ -1,0 +1,168 @@
+
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f4f1;
+}
+
+.brand {
+  width: 100px;
+  flex: 0 0 100px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.brand img {
+  width: 80px;
+  height: 40px;
+  display: block;
+  object-fit: contain;
+}
+
+
+.topbar{
+height:60px;
+background:#12395a;
+display:flex;
+align-items:center;
+padding:0 15px;
+color:#fff;
+}
+.logo{font-weight:bold;margin-right:20px}
+nav{display:flex;gap:15px;font-size:12px}
+nav a.active{background:rgba(255,255,255,.1);padding:6px 8px;border-radius:4px}
+.user{
+margin-left:auto;
+width:28px;height:28px;border-radius:50%;
+background:#d49a29;display:flex;align-items:center;justify-content:center;
+font-size:11px;font-weight:bold;
+}
+
+.layout{display:flex}
+.sidebar{
+width:190px;
+background:#faf9f5;
+border-right:1px solid #ddd;
+padding:20px 10px;
+min-height:calc(100vh - 60px);
+}
+.sidebar h5{
+font-size:10px;color:#999;margin:20px 0 8px;
+}
+.sidebar a{
+display:block;
+padding:10px;
+font-size:12px;
+border-radius:4px;
+}
+.sidebar .selected{
+background:#efe3c7;
+color:#12395a;
+font-weight:bold;
+}
+
+.content{
+flex:1;
+display:flex;
+justify-content:center;
+padding:40px 20px;
+}
+
+.card{
+width:430px;
+background:#fff;
+border:1px solid #e2e2df;
+border-radius:8px;
+padding:25px;
+box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.check{
+width:40px;height:40px;
+border-radius:50%;
+background:#e7f3ea;
+color:#4d8b5e;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+h2{
+margin:0;
+color:#223b4d;
+}
+p{
+color:#888;
+font-size:12px;
+}
+
+.book{
+display:flex;
+gap:12px;
+background:#f8f7f4;
+padding:10px;
+border-radius:5px;
+margin:15px 0;
+}
+.cover{
+width:45px;
+height:60px;
+background:#245c86;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+}
+
+.book strong{display:block;font-size:13px}
+.book small{color:#888}
+
+.info div{
+display:grid;
+grid-template-columns:140px 1fr;
+padding:12px 0;
+border-bottom:1px solid #eee;
+}
+.info span{
+font-size:10px;
+font-weight:bold;
+color:#999;
+}
+.info b{
+font-size:12px;
+color:#555;
+}
+
+.actions{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.actions button{
+flex:1;
+height:38px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.cancelar{
+border:1px solid #ddd;
+background:#fff;
+}
+
+.confirmar{
+border:none;
+background:#c88a21;
+color:#fff;
+font-weight:bold;
+}
+
+.confirmar:hover{
+background:#af761a;
+}

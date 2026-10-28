@@ -1,0 +1,21 @@
+PROYECTO DE MAQUETACIÓN — SISTEMA DE GESTIÓN BIBLIOTECARIA
+Tecnologías: HTML5, CSS3, JavaScript
+
+Pantallas implementadas:
+P-01 Inicio de sesión
+P-02 Panel principal
+P-03 Catálogo de libros
+P-04 Búsqueda de libros
+P-05 Detalle del libro
+P-06 Reserva de libro
+P-07 Gestión de préstamos
+P-08 Devolución
+P-09 Gestión de usuarios
+P-10 Gestión de libros
+
+Roles:
+Administrador: acceso a catálogo, búsqueda, préstamos, devoluciones, usuarios y libros.
+Bibliotecario: acceso a catálogo, búsqueda, préstamos y devoluciones.
+Usuario: acceso a panel, catálogo, búsqueda y consulta de préstamos.
+
+La maquetación es responsive y está preparada para una futura integración con PHP y MySQL.

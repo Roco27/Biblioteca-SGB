@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biblioSGB - Panel principal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <div class="brand">biblio<span>SGB</span></div>
+
+      <nav class="top-nav">
+        <a class="active" href="#panel">▣ Panel</a>
+        <a href="#catalogo">▤ Catálogo</a>
+        <a href="#prestamos">▱ Préstamos</a>
+        <a href="#devoluciones">↩ Devoluciones</a>
+        <a href="#usuarios">♙ Usuarios</a>
+        <a href="#libros">▥ Gestión de libros</a>
+      </nav>
+
+      <button class="profile" id="profileBtn" type="button">
+        <span>ADMINISTRADOR</span>
+        <b>AD</b>
+      </button>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="side-section">
+          <div class="side-title">GENERAL</div>
+          <a class="side-link selected" href="#panel">⌂ <span>Panel principal</span></a>
+        </div>
+
+        <div class="side-section">
+          <div class="side-title">CATÁLOGO</div>
+          <a class="side-link" href="#catalogo">◉ <span>Catálogo</span></a>
+          <a class="side-link" href="#libros">▤ <span>Gestión de libros</span></a>
+        </div>
+
+        <div class="side-section">
+          <div class="side-title">OPERACIONES</div>
+          <a class="side-link" href="#prestamos">▱ <span>Préstamos</span></a>
+          <a class="side-link" href="#devoluciones">↩ <span>Devoluciones</span></a>
+        </div>
+
+        <div class="side-section">
+          <div class="side-title">ADMINISTRACIÓN</div>
+          <a class="side-link" href="#usuarios">♙ <span>Usuarios</span></a>
+        </div>
+      </aside>
+
+      <main class="content" id="panel">
+        <div class="page-heading">
+          <div>
+            <h1>Panel principal</h1>
+            <p>Bienvenido de nuevo, <strong>Andrés Ramírez</strong> · Administradora</p>
+          </div>
+          <button class="primary-btn" id="newRecordBtn">＋ Nuevo registro</button>
+        </div>
+
+        <section class="stats">
+          <article class="stat-card">
+            <div class="stat-value">3,482</div>
+            <div class="stat-label">LIBROS EN CATÁLOGO</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">217</div>
+            <div class="stat-label">PRÉSTAMOS ACTIVOS</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">1,096</div>
+            <div class="stat-label">USUARIOS REGISTRADOS</div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-value">34</div>
+            <div class="stat-label">DEVOLUCIONES PENDIENTES</div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="panel-card activity-card">
+            <div class="card-heading">
+              <h2>Actividad reciente</h2>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>USUARIO</th>
+                    <th>ACCIÓN</th>
+                    <th>RECURSO</th>
+                    <th>ESTADO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Camila<br>Ortiz</td>
+                    <td>Préstamo<br>registrado</td>
+                    <td>Cien años de<br>soledad</td>
+                    <td><span class="badge success">A tiempo</span></td>
+                  </tr>
+                  <tr>
+                    <td>Julián<br>Pérez</td>
+                    <td>Devolución<br>registrada</td>
+                    <td>Clean Code</td>
+                    <td><span class="badge success">Completado</span></td>
+                  </tr>
+                  <tr>
+                    <td>Laura<br>Gómez</td>
+                    <td>Reserva<br>solicitada</td>
+                    <td>Sapiens</td>
+                    <td><span class="badge warning">Pendiente</span></td>
+                  </tr>
+                  <tr>
+                    <td>David<br>Suárez</td>
+                    <td>Préstamo<br>registrado</td>
+                    <td>El principito</td>
+                    <td><span class="badge danger">Vencido</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel-card quick-card">
+            <div class="card-heading">
+              <h2>Accesos rápidos</h2>
+            </div>
+
+            <div class="quick-actions">
+              <button type="button" class="quick-btn" data-action="libro">▤ Registrar libro nuevo</button>
+              <button type="button" class="quick-btn" data-action="usuario">♙ Registrar usuario</button>
+              <button type="button" class="quick-btn" data-action="prestamo">▱ Registrar préstamo</button>
+              <button type="button" class="quick-btn" data-action="devolucion">↩ Registrar devolución</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="close" id="closeModal" type="button">×</button>
+      <h2 id="modalTitle">Nuevo registro</h2>
+      <p id="modalText">Selecciona el tipo de registro.</p>
+
+      <form id="recordForm">
+        <label>
+          Nombre / descripción
+          <input id="recordName" type="text" placeholder="Escribe aquí..." required>
+        </label>
+        <label>
+          Observación
+          <input id="recordNote" type="text" placeholder="Información adicional">
+        </label>
+        <button class="primary-btn full" type="submit">Guardar registro</button>
+      </form>
+
+      <div class="message" id="message"></div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const form = document.getElementById('recordForm');
+    const message = document.getElementById('message');
+
+    const labels = {
+      libro: ['Registrar libro nuevo', 'Completa los datos del nuevo libro.'],
+      usuario: ['Registrar usuario', 'Completa los datos del usuario.'],
+      prestamo: ['Registrar préstamo', 'Completa los datos del préstamo.'],
+      devolucion: ['Registrar devolución', 'Completa los datos de la devolución.']
+    };
+
+    function openModal(type = 'nuevo') {
+      const data = labels[type] || ['Nuevo registro', 'Completa los datos del registro.'];
+      modalTitle.textContent = data[0];
+      modalText.textContent = data[1];
+      message.textContent = '';
+      form.reset();
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+      document.getElementById('recordName').focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.getElementById('newRecordBtn').addEventListener('click', () => openModal());
+
+    document.querySelectorAll('[data-action]').forEach(button => {
+      button.addEventListener('click', () => openModal(button.dataset.action));
+    });
+
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeModal();
+    });
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('recordName').value.trim();
+      message.textContent = `Registro guardado correctamente: ${name}`;
+      message.classList.add('visible');
+    });
+
+    document.getElementById('profileBtn').addEventListener('click', () => {
+      alert('Sesión activa: Administrador');
+    });
+
+    document.querySelectorAll('.side-link, .top-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('.side-link').forEach(item => item.classList.remove('selected'));
+        const target = link.getAttribute('href');
+        const matching = document.querySelector(`.side-link[href="${target}"]`);
+        if (matching) matching.classList.add('selected');
+      });
+    });
+  </script>
+</body>
+</html>

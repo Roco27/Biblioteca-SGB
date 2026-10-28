@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biblioSGB - Registrar devolución</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+ <div class="brand">
+  <img src="C:\Users\Richard\Desktop\html\SVG\Recurso 2.svg" alt="biblioSGB">
+</div>
+
+  <nav class="top-nav">
+    <a href="index.html">▣ Panel</a>
+    <a href="catalogo.html">▤ Catálogo</a>
+    <a href="prestamos.html">▱ Préstamos</a>
+    <a class="active" href="#devoluciones">↩ Devoluciones</a>
+    <a href="#usuarios">♙ Usuarios</a>
+    <a href="#libros">▥ Gestión de libros</a>
+  </nav>
+
+  <button class="profile" id="profileBtn" type="button">
+    <span>ADMINISTRADOR</span><b>AD</b>
+  </button>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="side-section">
+      <div class="side-title">GENERAL</div>
+      <a class="side-link" href="index.html">⌂ <span>Panel principal</span></a>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">CATÁLOGO</div>
+      <a class="side-link" href="catalogo.html">◉ <span>Catálogo</span></a>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">OPERACIONES</div>
+      <a class="side-link" href="prestamos.html">▱ <span>Préstamos</span></a>
+      <a class="side-link selected" href="#devoluciones">↩ <span>Devoluciones</span></a>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">ADMINISTRACIÓN</div>
+      <a class="side-link" href="#usuarios">♙ <span>Usuarios</span></a>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <section class="page-header">
+      <h1>Registrar devolución</h1>
+      <p>Busca el préstamo para registrar la devolución del ejemplar.</p>
+    </section>
+
+    <section class="return-card">
+
+      <form class="search-form" id="searchForm">
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="text"
+                 value="Camila Ortiz — Cien años de soledad"
+                 placeholder="Usuario o título del libro"
+                 aria-label="Buscar préstamo">
+        </div>
+        <button class="search-btn" type="submit">Buscar</button>
+      </form>
+
+      <div class="loan-result" id="loanResult">
+
+        <div class="book-line">
+          <div class="cover">
+            <span>Cien años<br>de soledad</span>
+          </div>
+
+          <div class="book-info">
+            <h2>Cien años de soledad</h2>
+            <p>Préstamo activo · Camila Ortiz</p>
+            <small>Fecha límite: 11/08/2026</small>
+          </div>
+
+          <span class="status">A tiempo</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="field">
+          <label for="condition">Estado del ejemplar</label>
+          <select id="condition">
+            <option>Buen estado</option>
+            <option>Con desgaste</option>
+            <option>Daño menor</option>
+            <option>Daño considerable</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="observations">Observaciones <em>(opcional)</em></label>
+          <textarea id="observations" placeholder="Sin novedades"></textarea>
+        </div>
+
+        <button class="confirm-btn" id="confirmBtn" type="button">
+          ✓ Confirmar devolución
+        </button>
+
+      </div>
+
+      <div class="not-found" id="notFound">
+        No se encontró un préstamo con esos datos.
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<div class="success-modal" id="successModal">
+  <div class="success-box">
+    <div class="success-icon">✓</div>
+    <h2>Devolución registrada</h2>
+    <p>El ejemplar de <strong>Cien años de soledad</strong> fue devuelto correctamente.</p>
+    <button id="closeSuccess">Aceptar</button>
+  </div>
+</div>
+
+<script>
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  const loanResult = document.getElementById('loanResult');
+  const notFound = document.getElementById('notFound');
+  const confirmBtn = document.getElementById('confirmBtn');
+  const successModal = document.getElementById('successModal');
+
+  searchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const value = searchInput.value.toLowerCase().trim();
+    const found =
+      value.includes('camila') ||
+      value.includes('cien años') ||
+      value.includes('soledad');
+
+    loanResult.style.display = found ? 'block' : 'none';
+    notFound.classList.toggle('show', !found);
+  });
+
+  confirmBtn.addEventListener('click', function() {
+    const condition = document.getElementById('condition').value;
+    const observations = document.getElementById('observations').value.trim();
+
+    successModal.classList.add('show');
+
+    confirmBtn.disabled = true;
+    confirmBtn.textContent = '✓ Devolución registrada';
+
+    console.log({
+      usuario: 'Camila Ortiz',
+      libro: 'Cien años de soledad',
+      estado: condition,
+      observaciones: observations
+    });
+  });
+
+  document.getElementById('closeSuccess').addEventListener('click', function() {
+    successModal.classList.remove('show');
+    confirmBtn.disabled = false;
+    confirmBtn.textContent = '✓ Confirmar devolución';
+  });
+
+  successModal.addEventListener('click', function(e) {
+    if (e.target === successModal) {
+      successModal.classList.remove('show');
+    }
+  });
+
+  document.getElementById('profileBtn').addEventListener('click', function() {
+    alert('Sesión activa: Administrador');
+  });
+</script>
+
+</body>
+</html>

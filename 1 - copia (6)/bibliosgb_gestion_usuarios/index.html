@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>biblioSGB - Gestión de usuarios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+ <div class="brand">
+  <img src="C:\Users\Richard\Desktop\html\SVG\Recurso 2.svg" alt="biblioSGB">
+</div>
+
+  <nav class="top-nav">
+    <a href="index.html">▣ Panel</a>
+    <a href="catalogo.html">▤ Catálogo</a>
+    <a href="prestamos.html">▱ Préstamos</a>
+    <a href="devoluciones.html">↩ Devoluciones</a>
+    <a class="active" href="#usuarios">♙ Usuarios</a>
+    <a href="#libros">▥ Gestión de libros</a>
+  </nav>
+
+  <button class="profile" id="profileBtn" type="button">
+    <span>ADMINISTRADOR</span><b>AD</b>
+  </button>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="side-section">
+      <div class="side-title">GENERAL</div>
+      <a class="side-link" href="index.html">⌂ <span>Panel principal</span></a>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">CATÁLOGO</div>
+      <a class="side-link" href="catalogo.html">◉ <span>Catálogo</span></a>
+      <a class="side-link" href="#libros">▤ <span>Gestión de libros</span></a>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">OPERACIONES</div>
+      <a class="side-link" href="prestamos.html">▱ <span>Préstamos</span></a>
+      <a class="side-link" href="devoluciones.html">↩ <span>Devoluciones</span></a>
+    </div>
+
+    <div class="side-section">
+      <div class="side-title">ADMINISTRACIÓN</div>
+      <a class="side-link selected" href="#usuarios">♙ <span>Usuarios</span></a>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <section class="heading">
+      <div>
+        <h1>Gestión de usuarios</h1>
+        <p><span id="userCount">1,096</span> usuarios registrados</p>
+      </div>
+
+      <button class="primary-btn" id="newUserBtn" type="button">
+        ＋ Registrar usuario
+      </button>
+    </section>
+
+    <section class="table-card">
+
+      <div class="toolbar">
+        <div class="search">
+          <span>⌕</span>
+          <input id="searchInput" type="search"
+                 placeholder="Buscar por nombre o correo...">
+        </div>
+
+        <select id="roleFilter">
+          <option value="Todos">Todos los roles</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Bibliotecario">Bibliotecario</option>
+          <option value="Usuario">Usuario</option>
+        </select>
+
+        <select id="statusFilter">
+          <option value="Todos">Todos los estados</option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table id="usersTable">
+          <thead>
+            <tr>
+              <th>NOMBRE</th>
+              <th>CORREO</th>
+              <th>ROL</th>
+              <th>ESTADO</th>
+              <th>ACCIÓN</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr data-role="Administrador" data-status="Activo">
+              <td>Andrea Ramírez</td>
+              <td>andrea.ramirez@sena.edu.co</td>
+              <td><span class="role">Administrador</span></td>
+              <td><span class="status active">Activo</span></td>
+              <td><button class="edit" data-user="Andrea Ramírez">Editar</button></td>
+            </tr>
+
+            <tr data-role="Bibliotecario" data-status="Activo">
+              <td>Bruno Barrera</td>
+              <td>bruno.barrera@sena.edu.co</td>
+              <td><span class="role">Bibliotecario</span></td>
+              <td><span class="status active">Activo</span></td>
+              <td><button class="edit" data-user="Bruno Barrera">Editar</button></td>
+            </tr>
+
+            <tr data-role="Usuario" data-status="Activo">
+              <td>Camila Ortiz</td>
+              <td>camila.ortiz@correo.com</td>
+              <td><span class="role">Usuario</span></td>
+              <td><span class="status active">Activo</span></td>
+              <td><button class="edit" data-user="Camila Ortiz">Editar</button></td>
+            </tr>
+
+            <tr data-role="Usuario" data-status="Inactivo">
+              <td>David Suárez</td>
+              <td>david.suarez@correo.com</td>
+              <td><span class="role">Usuario</span></td>
+              <td><span class="status inactive">Inactivo</span></td>
+              <td><button class="edit" data-user="David Suárez">Editar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="empty" id="empty">No se encontraron usuarios.</div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal para registrar/editar -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-box">
+    <button class="close" id="closeModal" type="button">×</button>
+
+    <h2 id="modalTitle">Registrar usuario</h2>
+    <p id="modalDescription">Completa los datos del nuevo usuario.</p>
+
+    <form id="userForm">
+      <label>
+        Nombre completo
+        <input id="name" required placeholder="Ej. Juan Pérez">
+      </label>
+
+      <label>
+        Correo electrónico
+        <input id="email" type="email" required placeholder="correo@ejemplo.com">
+      </label>
+
+      <label>
+        Rol
+        <select id="role" required>
+          <option>Usuario</option>
+          <option>Bibliotecario</option>
+          <option>Administrador</option>
+        </select>
+      </label>
+
+      <label>
+        Estado
+        <select id="status" required>
+          <option>Activo</option>
+          <option>Inactivo</option>
+        </select>
+      </label>
+
+      <button class="primary-btn full" type="submit">Guardar usuario</button>
+    </form>
+
+    <div class="saved" id="saved"></div>
+  </div>
+</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const roleFilter = document.getElementById('roleFilter');
+  const statusFilter = document.getElementById('statusFilter');
+  const rows = [...document.querySelectorAll('#usersTable tbody tr')];
+  const empty = document.getElementById('empty');
+
+  function filterUsers() {
+    const query = searchInput.value.toLowerCase().trim();
+    const role = roleFilter.value;
+    const status = statusFilter.value;
+    let visible = 0;
+
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      const rowRole = row.dataset.role;
+      const rowStatus = row.dataset.status;
+
+      const matchesSearch = text.includes(query);
+      const matchesRole = role === 'Todos' || rowRole === role;
+      const matchesStatus = status === 'Todos' || rowStatus === status;
+
+      const show = matchesSearch && matchesRole && matchesStatus;
+
+      row.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    empty.classList.toggle('show', visible === 0);
+  }
+
+  searchInput.addEventListener('input', filterUsers);
+  roleFilter.addEventListener('change', filterUsers);
+  statusFilter.addEventListener('change', filterUsers);
+
+  const modal = document.getElementById('modal');
+
+  function openModal(editing = false, user = null) {
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+
+    document.getElementById('modalTitle').textContent =
+      editing ? 'Editar usuario' : 'Registrar usuario';
+
+    document.getElementById('modalDescription').textContent =
+      editing ? 'Modifica los datos del usuario seleccionado.' :
+                'Completa los datos del nuevo usuario.';
+
+    document.getElementById('saved').textContent = '';
+
+    if (editing && user) {
+      const row = rows.find(r => r.dataset.user === user);
+      const cells = row ? row.querySelectorAll('td') : [];
+
+      if (cells.length) {
+        document.getElementById('name').value = cells[0].textContent.trim();
+        document.getElementById('email').value = cells[1].textContent.trim();
+        document.getElementById('role').value = row.dataset.role;
+        document.getElementById('status').value = row.dataset.status;
+      }
+    } else {
+      document.getElementById('userForm').reset();
+    }
+  }
+
+  function closeModal() {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  document.getElementById('newUserBtn')
+    .addEventListener('click', () => openModal(false));
+
+  document.getElementById('closeModal')
+    .addEventListener('click', closeModal);
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  document.querySelectorAll('.edit').forEach(btn => {
+    btn.addEventListener('click', () => {
+      openModal(true, btn.dataset.user);
+    });
+  });
+
+  document.getElementById('userForm').addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const role = document.getElementById('role').value;
+    const status = document.getElementById('status').value;
+
+    document.getElementById('saved').textContent =
+      `Usuario ${name} guardado correctamente (${role}, ${status}).`;
+
+    document.getElementById('saved').classList.add('show');
+  });
+
+  document.getElementById('profileBtn').addEventListener('click', () => {
+    alert('Sesión activa: Administrador');
+  });
+</script>
+
+</body>
+</html>
